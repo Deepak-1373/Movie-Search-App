@@ -1,1 +1,1 @@
-export const movieApiKey = "";
+export const movieApiKey = process.env.MOVIE_API_KEY;
