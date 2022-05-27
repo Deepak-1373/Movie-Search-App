@@ -17,5 +17,6 @@ video {
 @layer base {
   body {
     @apply font-[Raleway];
+    @apply bg-primary-color;
   }
 }

@@ -4,7 +4,7 @@ import User from "../assets/user.png";
 
 export const Header = () => {
   return (
-    <div className="bg-secondary-color h-24 flex items-center justify-between py-0 px-9">
+    <div className="bg-secondary-color h-24 flex items-center justify-between py-0 px-10">
       <Link to="/">
         <div className="text-font-primary text-xl font-semibold">Movie App</div>
       </Link>
