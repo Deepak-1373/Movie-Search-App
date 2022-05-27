@@ -3,7 +3,7 @@ import "./App.css";
 function App() {
   return (
     <div className="App">
-      <h2 className="text-font-secondary">Redux toolkit Movie app</h2>
+      <h2 className="text-primary-color">Redux toolkit Movie app</h2>
     </div>
   );
 }
