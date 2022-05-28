@@ -2,14 +2,18 @@ import React from "react";
 
 export const MovieCard = ({ data }) => {
   return (
-    <div>
+    <div className="bg-secondary-color cursor-pointer">
       <div>
-        <div>
-          <img src={data.Poster} alt={data.Title} />
+        <div className="h-80">
+          <img
+            className="w-full h-full p-3"
+            src={data.Poster}
+            alt={data.Title}
+          />
         </div>
         <div>
-          <div>
-            <h4>{data.Title}</h4>
+          <div className="text-font-primary p-3">
+            <h4 className="text-xl mb-2 font-normal">{data.Title}</h4>
             <p>{data.Year}</p>
           </div>
         </div>
