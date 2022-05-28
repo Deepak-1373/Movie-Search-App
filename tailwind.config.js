@@ -8,6 +8,9 @@ module.exports = {
         "font-primary": "#ffffff",
         "font-secondary": "#79b8f3",
       },
+      gridTemplateColumns: {
+        16: "repeat(auto-fill, minmax(220px, 1fr))",
+      },
     },
   },
   plugins: [],

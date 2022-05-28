@@ -22,7 +22,7 @@ export const MovieListing = () => {
     <div>
       <div className="my-5 mx-0">
         <h2 className="text-font-secondary font-semibold mt-2">Movies</h2>
-        <div>{renderMovies}</div>
+        <div className="grid grid-cols-16 gap-3">{renderMovies}</div>
       </div>
     </div>
   );
