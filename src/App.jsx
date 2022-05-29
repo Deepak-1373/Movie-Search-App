@@ -11,7 +11,7 @@ function App() {
       <div className="my-0 mx-10">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/movie/:imdbID" element={MovieDetail} />
+          <Route path="/movie/:imdbID" element={<MovieDetail />} />
         </Routes>
       </div>
       <Footer />
