@@ -2,6 +2,8 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { getAllMovies, getAllShows } from "../features/movies/movieSlice";
 import { MovieCard } from "./MovieCard";
+import Slider from "react-slick";
+import { Settings } from "./settings";
 
 export const MovieListing = () => {
   const movies = useSelector(getAllMovies);
@@ -35,13 +37,17 @@ export const MovieListing = () => {
         <h2 className="text-font-secondary text-2xl font-semibold mt-2">
           Movies
         </h2>
-        <div className="grid grid-cols-16 gap-3">{renderMovies}</div>
+        <div>
+          <Slider {...Settings}>{renderMovies}</Slider>
+        </div>
       </div>
       <div className="my-5 mx-0 mt-3">
         <h2 className="text-font-secondary text-2xl font-semibold mt-2">
           Shows
         </h2>
-        <div className="grid grid-cols-16 gap-3">{renderShows}</div>
+        <div>
+          <Slider {...Settings}>{renderShows}</Slider>
+        </div>
       </div>
     </div>
   );
