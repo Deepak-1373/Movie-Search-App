@@ -10,22 +10,65 @@ export const MovieDetail = () => {
   const { imdbID } = useParams();
   const dispatch = useDispatch();
   const data = useSelector(getSelectedMovieOrShow);
-  console.log(data);
 
   useEffect(() => {
     dispatch(fetchAsyncMoviesOrShowsDetails(imdbID));
   }, [dispatch, imdbID]);
+
   return (
-    <div>
+    <div className="flex py-10 px-0 text-font-primary font-normal">
       <div>
-        <div>
-          <div className="movie-rating">
-            <span>
-              IMDB Rating
-              <span className="material-symbols-outlined">star</span>
+        <div className="text-4xl text-font-primary">{data.Title}</div>
+        <div className="flex pl-[3px] mt-5 text-font-secondary flex-wrap">
+          <span className="mr-5 mt-3 flex items-center justify-center">
+            IMDB Rating
+            <span className="ml-2 material-symbols-outlined">star</span> :
+            {data.imdbRating}
+          </span>
+          <span className="mr-5 mt-3 flex items-center justify-center">
+            IMDB Votes
+            <span className="ml-2 material-symbols-outlined">thumb_up</span> :
+            {data.imdbVotes}
+          </span>
+          <span className="mr-5 mt-3 flex items-center justify-center">
+            Runtime
+            <span className="ml-2 material-symbols-outlined">videocam</span> :
+            {data.Runtime}
+          </span>
+          <span className="mr-5 mt-3 flex items-center justify-center">
+            Year
+            <span className="ml-2 material-symbols-outlined">
+              calendar_month
             </span>
+            :{data.Year}
+          </span>
+        </div>
+        <div className="mt-5 leading-7">{data.Plot}</div>
+        <div className="movie-info">
+          <div>
+            <span>Director</span>
+            <span>{data.Director}</span>
+          </div>
+          <div>
+            <span>Stars</span>
+            <span>{data.Actors}</span>
+          </div>
+          <div>
+            <span>Genres</span>
+            <span>{data.Genre}</span>
+          </div>
+          <div>
+            <span>Languages</span>
+            <span>{data.Language}</span>
+          </div>
+          <div>
+            <span>Awards</span>
+            <span>{data.Awards}</span>
           </div>
         </div>
+      </div>
+      <div className="contents">
+        <img src={data.Poster} alt={data.Title} />
       </div>
     </div>
   );
