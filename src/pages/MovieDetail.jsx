@@ -67,9 +67,7 @@ export const MovieDetail = () => {
           </div>
         </div>
       </div>
-      <div className="contents">
-        <img src={data.Poster} alt={data.Title} />
-      </div>
+      <img src={data.Poster} alt={data.Title} />
     </div>
   );
 };
