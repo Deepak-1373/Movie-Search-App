@@ -1,12 +1,21 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import User from "../assets/user.png";
+import {
+  fetchAsyncMovies,
+  fetchAsyncShows,
+} from "../features/movies/movieSlice";
 
 export const Header = () => {
   const [searchTerm, setSearchTerm] = useState("");
+  const dispatch = useDispatch();
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log(searchTerm);
+    if (searchTerm === "") return alert("Please enter search term!");
+    dispatch(fetchAsyncMovies(searchTerm));
+    dispatch(fetchAsyncShows(searchTerm));
+    setSearchTerm("");
   };
 
   return (
