@@ -20,7 +20,7 @@ export const MovieDetail = () => {
   }, [dispatch, imdbID]);
 
   return (
-    <div className="flex py-10 px-0 text-font-primary font-normal">
+    <div className="flex flex-col md:flex-row lg:flex-row py-10 px-0 text-font-primary font-normal">
       {Object.keys(data).length === 0 ? (
         <div>...Loading</div>
       ) : (
