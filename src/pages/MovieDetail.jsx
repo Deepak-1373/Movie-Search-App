@@ -15,5 +15,18 @@ export const MovieDetail = () => {
   useEffect(() => {
     dispatch(fetchAsyncMoviesOrShowsDetails(imdbID));
   }, [dispatch, imdbID]);
-  return <div>MovieDetail</div>;
+  return (
+    <div>
+      <div>
+        <div>
+          <div className="movie-rating">
+            <span>
+              IMDB Rating
+              <span className="material-symbols-outlined">star</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 };
