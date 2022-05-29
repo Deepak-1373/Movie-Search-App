@@ -32,21 +32,17 @@ export const MovieDetail = () => {
                 IMDB Rating
                 <span className="ml-2 text-yellow-500 material-symbols-outlined">
                   star
-                </span>{" "}
+                </span>
                 :{data.imdbRating}
               </span>
               <span className="mr-5 mt-3 flex items-center justify-center">
                 IMDB Votes
-                <span className="ml-2 material-symbols-outlined">
-                  thumb_up
-                </span>{" "}
+                <span className="ml-2 material-symbols-outlined">thumb_up</span>
                 :{data.imdbVotes}
               </span>
               <span className="mr-5 mt-3 flex items-center justify-center">
                 Runtime
-                <span className="ml-2 material-symbols-outlined">
-                  videocam
-                </span>{" "}
+                <span className="ml-2 material-symbols-outlined">videocam</span>
                 :{data.Runtime}
               </span>
               <span className="mr-5 mt-3 flex items-center justify-center">
