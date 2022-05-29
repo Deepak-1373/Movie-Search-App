@@ -2,7 +2,7 @@ import React from "react";
 
 export const MovieCard = ({ data }) => {
   return (
-    <div className="bg-secondary-color cursor-pointer">
+    <div className="bg-secondary-color cursor-pointer transition-all duration-300 hover:scale-105 hover:transition-all hover:duration-300">
       <div>
         <div className="h-80">
           <img
