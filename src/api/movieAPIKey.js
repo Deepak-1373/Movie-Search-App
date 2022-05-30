@@ -1,1 +1,1 @@
-export const movieApiKey = process.env.REACT_APP_MOVIE_API_KEY;
+export const movieApiKey = "8d2ab62c";
