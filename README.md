@@ -20,6 +20,7 @@ https://user-images.githubusercontent.com/61752151/170991968-4a35c697-5b25-4334-
 - Redux
 - Redux-toolkit
 - React-Router
+- tailwind css
 
 ## Features
 <ul>
