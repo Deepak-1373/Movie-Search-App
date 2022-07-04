@@ -7,11 +7,19 @@ import {
   removeFromFavourite,
   updateMoviePriority,
 } from "../features";
+import { useEffect } from "react";
 
 export const MovieCard = ({ data }) => {
   const [priority, setPriority] = useState("lower"); // making state for storing priority of each movie card
   const favouriteMovies = useSelector(getAllFavourite);
   const dispatch = useDispatch();
+
+  // this piece of code prevents the default behaviour of priority and helps it to be in sync with the selected favourite movie priority when switching between filters
+  useEffect(() => {
+    if (data?.priority) {
+      setPriority(data.priority);
+    }
+  }, [data.priority]);
 
   // checking if the current movie selected is already in favourite movies array or not
   const isMovieInFavourite = favouriteMovies.some(
@@ -49,7 +57,7 @@ export const MovieCard = ({ data }) => {
   };
 
   return (
-    <div className="bg-secondary-color cursor-pointer transition-all duration-300 hover:scale-105 hover:transition-all hover:duration-300 min-h-[450px] h-full m-[10px]">
+    <div className="bg-secondary-color max-w-[210px] mx-auto cursor-pointer transition-all duration-300 hover:scale-105 hover:transition-all hover:duration-300 min-h-[450px] h-full m-[10px]">
       <Link to={`/movie/${data.imdbID}`}>
         <div>
           {/* Add lazy loading effect for optimisation, faster initial load time and less data traffic */}
