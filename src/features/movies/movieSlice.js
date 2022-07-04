@@ -8,17 +8,7 @@ export const fetchAsyncMovies = createAsyncThunk(
     const response = await movieApi.get(
       `?apikey=${movieApiKey}&s=${term}&type=movie`
     );
-    return response.data;
-  }
-);
-
-export const fetchAsyncShows = createAsyncThunk(
-  "movies/fetchAsyncShows",
-  async (term) => {
-    const response = await movieApi.get(
-      `?apikey=${movieApiKey}&s=${term}&type=movie`
-    );
-    return response.data;
+    return response.data.Search;
   }
 );
 
@@ -33,11 +23,11 @@ export const fetchAsyncMoviesOrShowsDetails = createAsyncThunk(
 );
 
 const initialState = {
-  movies: {},
-  shows: {},
+  movies: [],
   selectedMovieOrShow: {},
   isLoading: false,
   favourite: [],
+  sortBy: "all",
 };
 
 const movieSlice = createSlice({
@@ -62,7 +52,6 @@ const movieSlice = createSlice({
 
     // action to update the priority of favourite movie
     updateMoviePriority: (state, { payload }) => {
-      console.log(payload);
       state.favourite = payload.isMovieInFavourite
         ? state.favourite.map((movie) =>
             movie.imdbID === payload.imdbID
@@ -70,6 +59,11 @@ const movieSlice = createSlice({
               : movie
           )
         : state.favourite;
+    },
+
+    // action to handle the data filtered on basis of priority and favourites
+    updateSortByType: (state, { payload }) => {
+      state.sortBy = payload;
     },
   },
   extraReducers: {
@@ -81,10 +75,7 @@ const movieSlice = createSlice({
       state.isLoading = false;
     },
     [fetchAsyncMovies.rejected]: () => {
-      console.log("Rejected");
-    },
-    [fetchAsyncShows.fulfilled]: (state, { payload }) => {
-      state.shows = payload;
+      alert("There is some issue with the server, please try later!");
     },
     [fetchAsyncMoviesOrShowsDetails.fulfilled]: (state, { payload }) => {
       state.selectedMovieOrShow = payload;
@@ -97,11 +88,12 @@ export const {
   addToFavourite,
   removeFromFavourite,
   updateMoviePriority,
+  updateSortByType,
 } = movieSlice.actions;
 export const getAllMovies = (state) => state.movies.movies;
-export const getAllShows = (state) => state.movies.shows;
 export const getSelectedMovieOrShow = (state) =>
   state.movies.selectedMovieOrShow;
 export const getLoaderInfo = (state) => state.movies.isLoading;
 export const getAllFavourite = (state) => state.movies.favourite;
+export const sortBy = (state) => state.movies.sortBy;
 export default movieSlice.reducer;
