@@ -1,41 +1,23 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import {
+  sortBy,
   getAllMovies,
-  getAllShows,
   getLoaderInfo,
+  getAllFavourite,
 } from "../features/movies/movieSlice";
+import { getFilteredMovies } from "../utils/getFilteredData";
 import { MovieCard } from "./MovieCard";
-import Slider from "react-slick";
-import { Settings } from "./settings";
 import { TailSpin } from "react-loader-spinner";
+import { SelectBox } from "./SelectBox";
 
 export const MovieListing = () => {
   const movies = useSelector(getAllMovies);
-  const shows = useSelector(getAllShows);
   const isLoading = useSelector(getLoaderInfo);
-  let renderMovies,
-    renderShows = "";
+  const sortByType = useSelector(sortBy);
+  const favouriteMovies = useSelector(getAllFavourite);
 
-  renderMovies =
-    movies.Response === "True" ? (
-      movies.Search.map((movie, index) => (
-        <MovieCard key={index} data={movie} />
-      ))
-    ) : (
-      <div>
-        <h3>{movies.Error}</h3>
-      </div>
-    );
-
-  renderShows =
-    shows.Response === "True" ? (
-      shows.Search.map((show, index) => <MovieCard key={index} data={show} />)
-    ) : (
-      <div>
-        <h3>{shows.Error}</h3>
-      </div>
-    );
+  const filteredMovies = getFilteredMovies(movies, favouriteMovies, sortByType);
 
   return (
     <div>
@@ -44,19 +26,16 @@ export const MovieListing = () => {
       ) : (
         <>
           <div className="my-5 mx-0">
-            <h2 className="text-font-secondary text-2xl font-semibold mt-2">
-              Movies
-            </h2>
-            <div>
-              <Slider {...Settings}>{renderMovies}</Slider>
+            <div className="mr-3 flex gap-4 justify-between items-center">
+              <h2 className="text-font-secondary text-2xl font-semibold mt-2 mr-3">
+                Movies
+              </h2>
+              <SelectBox />
             </div>
-          </div>
-          <div className="my-5 mx-0 mt-3">
-            <h2 className="text-font-secondary text-2xl font-semibold mt-2">
-              Shows
-            </h2>
-            <div>
-              <Slider {...Settings}>{renderShows}</Slider>
+            <div className="grid-layout">
+              {filteredMovies.map((movie, index) => (
+                <MovieCard key={index} data={movie} />
+              ))}
             </div>
           </div>
         </>
