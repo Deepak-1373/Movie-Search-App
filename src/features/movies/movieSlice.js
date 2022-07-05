@@ -8,17 +8,7 @@ export const fetchAsyncMovies = createAsyncThunk(
     const response = await movieApi.get(
       `?apikey=${movieApiKey}&s=${term}&type=movie`
     );
-    return response.data;
-  }
-);
-
-export const fetchAsyncShows = createAsyncThunk(
-  "movies/fetchAsyncShows",
-  async (term) => {
-    const response = await movieApi.get(
-      `?apikey=${movieApiKey}&s=${term}&type=movie`
-    );
-    return response.data;
+    return response.data.Search;
   }
 );
 
@@ -33,10 +23,11 @@ export const fetchAsyncMoviesOrShowsDetails = createAsyncThunk(
 );
 
 const initialState = {
-  movies: {},
-  shows: {},
+  movies: [],
   selectedMovieOrShow: {},
   isLoading: false,
+  favourite: JSON.parse(localStorage.getItem("favouriteMovies")) ?? [],
+  sortBy: "all",
 };
 
 const movieSlice = createSlice({
@@ -46,34 +37,66 @@ const movieSlice = createSlice({
     removeSelectedMovieOrShow: (state) => {
       state.selectedMovieOrShow = {};
     },
+
+    // action to add movies to favourite array
+    addToFavourite: (state, { payload }) => {
+      state.favourite.push(payload);
+      localStorage.setItem("favouriteMovies", JSON.stringify(state.favourite));
+    },
+
+    // action to remove movies from favourite array
+    removeFromFavourite: (state, { payload }) => {
+      state.favourite = state.favourite.filter(
+        ({ imdbID }) => imdbID !== payload
+      );
+      localStorage.setItem("favouriteMovies", JSON.stringify(state.favourite));
+    },
+
+    // action to update the priority of favourite movie
+    updateMoviePriority: (state, { payload }) => {
+      state.favourite = payload.isMovieInFavourite
+        ? state.favourite.map((movie) =>
+            movie.imdbID === payload.imdbID
+              ? { ...movie, priority: payload.priority }
+              : movie
+          )
+        : state.favourite;
+      localStorage.setItem("favouriteMovies", JSON.stringify(state.favourite));
+    },
+
+    // action to handle the data filtered on basis of priority and favourites
+    updateSortByType: (state, { payload }) => {
+      state.sortBy = payload;
+    },
   },
   extraReducers: {
     [fetchAsyncMovies.pending]: (state) => {
-      console.log("Pending");
-      return { ...state, isLoading: true };
+      state.isLoading = true;
     },
     [fetchAsyncMovies.fulfilled]: (state, { payload }) => {
-      console.log("Fetched Async Movies Succesfully");
-      return { ...state, movies: payload, isLoading: false };
+      state.movies = payload;
+      state.isLoading = false;
     },
     [fetchAsyncMovies.rejected]: () => {
-      console.log("Rejected");
-    },
-    [fetchAsyncShows.fulfilled]: (state, { payload }) => {
-      console.log("Fetched Async Shows Succesfully");
-      return { ...state, shows: payload };
+      alert("There is some issue with the server, please try later!");
     },
     [fetchAsyncMoviesOrShowsDetails.fulfilled]: (state, { payload }) => {
-      console.log("Fetched Async Shows Succesfully");
-      return { ...state, selectedMovieOrShow: payload };
+      state.selectedMovieOrShow = payload;
     },
   },
 });
 
-export const { removeSelectedMovieOrShow } = movieSlice.actions;
+export const {
+  removeSelectedMovieOrShow,
+  addToFavourite,
+  removeFromFavourite,
+  updateMoviePriority,
+  updateSortByType,
+} = movieSlice.actions;
 export const getAllMovies = (state) => state.movies.movies;
-export const getAllShows = (state) => state.movies.shows;
 export const getSelectedMovieOrShow = (state) =>
   state.movies.selectedMovieOrShow;
 export const getLoaderInfo = (state) => state.movies.isLoading;
+export const getAllFavourite = (state) => state.movies.favourite;
+export const sortBy = (state) => state.movies.sortBy;
 export default movieSlice.reducer;

@@ -2,11 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+@import "https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Round";
 
 img,
 video {
   block-size: auto;
   max-inline-size: 100%;
+}
+
+select {
+  outline: none;
 }
 
 * {
@@ -19,6 +24,23 @@ video {
   body {
     @apply font-[Raleway];
     @apply bg-primary-color;
+  }
+}
+
+@layer utilities {
+  /* It allows limiting the contents of a block container to a specified number of lines */
+  .line-clamp {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    -webkit-line-clamp: 1;
+  }
+
+  .grid-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    grid-row-gap: 16px;
+    grid-column-gap: 8px;
   }
 }
 

@@ -5,7 +5,7 @@ import {
   fetchAsyncMoviesOrShowsDetails,
   getSelectedMovieOrShow,
   removeSelectedMovieOrShow,
-} from "../features/movies/movieSlice";
+} from "../features";
 import { TailSpin } from "react-loader-spinner";
 
 export const MovieDetail = () => {
@@ -33,7 +33,7 @@ export const MovieDetail = () => {
             <div className="flex pl-[3px] mt-5 text-font-secondary flex-wrap">
               <span className="mr-5 mt-3 flex items-center justify-center">
                 IMDB Rating
-                <span className="ml-2 text-yellow-500 material-symbols-outlined">
+                <span className="ml-2 text-yellow-500 material-icons-outlined">
                   star
                 </span>
                 :{data.imdbRating}
