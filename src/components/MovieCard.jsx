@@ -14,8 +14,16 @@ export const MovieCard = ({ data }) => {
   const favouriteMovies = useSelector(getAllFavourite);
   const dispatch = useDispatch();
 
+  // this checks if the data is currently in the favourite movies then set the correct priority of the data
+  const isCurrentDataInFavouriteMovies = favouriteMovies.find(
+    ({ imdbID }) => imdbID === data.imdbID
+  );
+
   // this piece of code prevents the default behaviour of priority and helps it to be in sync with the selected favourite movie priority when switching between filters
   useEffect(() => {
+    if (isCurrentDataInFavouriteMovies) {
+      setPriority(isCurrentDataInFavouriteMovies.priority);
+    }
     if (data?.priority) {
       setPriority(data.priority);
     }
