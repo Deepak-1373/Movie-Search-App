@@ -5,7 +5,7 @@ import {
   fetchAsyncMoviesOrShowsDetails,
   getSelectedMovieOrShow,
   removeSelectedMovieOrShow,
-} from "../features/movies/movieSlice";
+} from "../features";
 import { TailSpin } from "react-loader-spinner";
 
 export const MovieDetail = () => {

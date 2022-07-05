@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { MovieListing } from "../components";
 import { useDispatch } from "react-redux";
-import { fetchAsyncMovies } from "../features/movies/movieSlice";
+import { fetchAsyncMovies } from "../features";
 
 export const Home = () => {
   const dispatch = useDispatch();

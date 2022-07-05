@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import User from "../assets/user.png";
-import { fetchAsyncMovies } from "../features/movies/movieSlice";
+import { fetchAsyncMovies } from "../features";
 
 export const Header = () => {
   const [searchTerm, setSearchTerm] = useState("");
