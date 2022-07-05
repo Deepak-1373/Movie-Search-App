@@ -35,7 +35,7 @@ export const Header = () => {
             className="py-0 px-2 m-2 flex justify-center items-center h-10 cursor-pointer text-xl bg-font-primary"
             type="submit"
           >
-            <span className="material-symbols-outlined">search</span>
+            <span className="material-icons-outlined">search</span>
           </button>
         </form>
       </div>
