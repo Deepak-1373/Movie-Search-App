@@ -27,7 +27,7 @@ export const MovieCard = ({ data }) => {
     if (data?.priority) {
       setPriority(data.priority);
     }
-  }, [data.priority]);
+  }, [data.priority, isCurrentDataInFavouriteMovies]);
 
   // checking if the current movie selected is already in favourite movies array or not
   const isMovieInFavourite = favouriteMovies.some(
