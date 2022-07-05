@@ -13,7 +13,7 @@ https://user-images.githubusercontent.com/61752151/177328227-912325cd-8dcd-4bdb-
 
 
 ## About
- - It is a movie search web app built by using redux-toolkit. It fetches the list of movies for the desired user. It lets user to store is favourite movies, allows them to give priority to the favourite movies and it suggest other movies based on the year of favourite movies selected.
+ - It is a movie search web app built by using redux-toolkit. It fetches the list of movies for the desired user. It lets user to store his/her favourite movies, allows them to give priority to the favourite movies and it suggest other movies based on the year of favourite movies selected.
    
 ## Technologies used
 - ReactJS
