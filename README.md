@@ -1,6 +1,6 @@
 ## Preview
 
-https://user-images.githubusercontent.com/61752151/170991968-4a35c697-5b25-4334-8aee-9ce3c5189d0e.mp4
+https://user-images.githubusercontent.com/61752151/177328227-912325cd-8dcd-4bdb-a8a7-c09ee67f5fd7.mp4
 
 ## Table of Contents
 
@@ -13,7 +13,7 @@ https://user-images.githubusercontent.com/61752151/170991968-4a35c697-5b25-4334-
 
 
 ## About
- - It is a movie search web app built by using redux-toolkit. It fetches the list of movies or shows for the desired search by the users.
+ - It is a movie search web app built by using redux-toolkit. It fetches the list of movies for the desired user. It lets user to store is favourite movies, allows them to give priority to the favourite movies and it suggest other movies based on the year of favourite movies selected.
    
 ## Technologies used
 - ReactJS
@@ -23,7 +23,8 @@ https://user-images.githubusercontent.com/61752151/170991968-4a35c697-5b25-4334-
 
 ## Features
 <ul>
-  <li>Home Page(Movie/shows Listing)</li>
+  <li>Home Page(Movie Listing)</li>
+  <li>Filtering based on favourite movies</li>
   <li>Movie/Shows Detail Page</li>
   <li>Not Found Page</li>
 </ul>
@@ -52,11 +53,9 @@ npm start
 
 ## Screenshots
 
-![image](https://user-images.githubusercontent.com/61752151/170990789-0427fb20-918e-46da-8259-282df8064eeb.png)
-![image](https://user-images.githubusercontent.com/61752151/170990848-0c149d1a-1373-4f75-a9d1-619edf0ee6fb.png)
-![image](https://user-images.githubusercontent.com/61752151/170990967-1a420b86-1df0-4399-a596-68e90e6c417f.png)
-
-
+![image](https://user-images.githubusercontent.com/61752151/177327191-973f5b71-4f51-4494-bf45-b9602d73f3de.png)
+![image](https://user-images.githubusercontent.com/61752151/177327261-910b56c8-4e02-4518-9902-a16e44b125bd.png)
+![image](https://user-images.githubusercontent.com/61752151/177327395-20f566b9-b2b7-4402-8d88-4d44fce716ce.png)
 
 
 ## 👨‍💻 Connect with me 
