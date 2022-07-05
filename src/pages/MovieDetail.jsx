@@ -33,7 +33,7 @@ export const MovieDetail = () => {
             <div className="flex pl-[3px] mt-5 text-font-secondary flex-wrap">
               <span className="mr-5 mt-3 flex items-center justify-center">
                 IMDB Rating
-                <span className="ml-2 text-yellow-500 material-symbols-outlined">
+                <span class="ml-2 text-yellow-500 material-icons-outlined">
                   star
                 </span>
                 :{data.imdbRating}
