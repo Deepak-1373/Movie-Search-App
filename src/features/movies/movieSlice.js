@@ -26,7 +26,7 @@ const initialState = {
   movies: [],
   selectedMovieOrShow: {},
   isLoading: false,
-  favourite: [],
+  favourite: JSON.parse(localStorage.getItem("favouriteMovies")) ?? [],
   sortBy: "all",
 };
 
@@ -41,6 +41,7 @@ const movieSlice = createSlice({
     // action to add movies to favourite array
     addToFavourite: (state, { payload }) => {
       state.favourite.push(payload);
+      localStorage.setItem("favouriteMovies", JSON.stringify(state.favourite));
     },
 
     // action to remove movies from favourite array
@@ -48,6 +49,7 @@ const movieSlice = createSlice({
       state.favourite = state.favourite.filter(
         ({ imdbID }) => imdbID !== payload
       );
+      localStorage.setItem("favouriteMovies", JSON.stringify(state.favourite));
     },
 
     // action to update the priority of favourite movie
@@ -59,6 +61,7 @@ const movieSlice = createSlice({
               : movie
           )
         : state.favourite;
+      localStorage.setItem("favouriteMovies", JSON.stringify(state.favourite));
     },
 
     // action to handle the data filtered on basis of priority and favourites
