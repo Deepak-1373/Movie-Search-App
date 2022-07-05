@@ -22,6 +22,9 @@ export const SelectBox = () => {
         Filter by higher priority
       </option>
       <option value="filter_by_lower_priority">Filter by lower priority</option>
+      <option value="other_movies_you_might_like">
+        Other movies you might like
+      </option>
     </select>
   );
 };
